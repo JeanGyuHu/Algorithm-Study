@@ -14,7 +14,7 @@ int findFriend() {
 	int first = -1;
 	int i;
 
-	for (i = 0; i < 10; i++) {
+	for (i = 0; i < studentNum; i++) {
 		if (picnic[i] == 0) {
 			first = i;
 			break;
@@ -23,7 +23,7 @@ int findFriend() {
 	if (first == -1)
 		return 1;
 	
-	for (i = first + 1; i < 10; i++) {
+	for (i = first + 1; i < studentNum; i++) {
 		if (fr[first][i] == 1 && picnic[i] == 0) {
 
 			picnic[i] = 1;
@@ -33,8 +33,8 @@ int findFriend() {
 			picnic[first] = 0;
 		}
 	}
-	printf("%d\n", ret);
-	ret = 0;
+	
+	
 	return 0;
 }
 
@@ -52,6 +52,8 @@ int main() {
 			fr[y][x] = 1;
 		}
 		findFriend();
+		printf("%d\n", ret);
+		ret = 0;
 
 		for (k = 0; k < 10; k++) {
 			for (l = 0; l < 10; l++) {
