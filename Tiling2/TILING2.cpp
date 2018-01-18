@@ -3,21 +3,19 @@
 #include <stdio.h>
 #include <string.h>
 
-int C,N;
-int cache[100];
+int C, N;
+int cache[101];
 
 int solution(int x) {
 
-	int result=0;
-	
-	if (cache[x] != -1)
+
+	if (x <= 100 && cache[x] != -1)
 		return cache[x];
-	if (x > N)	return 0;
+
 	if (x == N)	return 1;
+	else if (x > N)	return 0;
 
-	cache[x] = (solution(x + 1) + solution(x + 2)) % 1000000007;
-
-	return cache[x];
+	return cache[x] = (solution(x + 1) + solution(x + 2)) % 1000000007;
 }
 int main() {
 
@@ -26,10 +24,7 @@ int main() {
 	while (C--) {
 		memset(cache, -1, sizeof(cache));
 		scanf("%d", &N);
-
-		solution(0);
-
-		printf("%d\n", cache[0]);
+		printf("%d\n", solution(0));
 	}
 
 	return 0;
